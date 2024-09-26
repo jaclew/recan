@@ -137,6 +137,12 @@ class Simgen():
                     continue
                 seq1 = alignment_slice[self.pot_rec_index].seq
                 seq2 = seq.seq
+                
+                # uppcase sequences, otherwise sequence comparisons with one in uppercase and one in lowercase will be considered different
+                seq1 = seq1.upper()
+                seq2 = seq2.upper()
+                #/
+                
                 distance = calc_pairwise_distance(seq1=seq1, seq2=seq2, 
                                                  dist_method=dist) 
                 self.distance_data[seq.id].append(distance)

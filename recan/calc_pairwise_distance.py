@@ -44,7 +44,12 @@ def p_distance(seq1, seq2):
     for x in zip(seq1, seq2):
         if '-' not in x and x[0] not in DEGENERATE_NUCS and x[1] not in DEGENERATE_NUCS: # skip gaps
             nuc_pairs.append(x)
-            
+    
+    # check if no pairs were obtained (all gaps or degenerate nucls), then return 1.0, i.e. highest dist
+    if not nuc_pairs:
+        return 1.0
+    #/
+    
     for (nuc_1, nuc_2) in nuc_pairs:
         if nuc_1 != nuc_2:
             different_nucs += 1
@@ -100,7 +105,12 @@ def k2p_distance(seq1,seq2):
     for x in zip(seq1,seq2):
         if '-' not in x and x[0] not in DEGENERATE_NUCS and x[1] not in DEGENERATE_NUCS: 
             nuc_pairs.append(x)
-        
+    
+    # check if no pairs were obtained (all gaps or degenerate nucls), then return 1.0, i.e. highest dist
+    if not nuc_pairs:
+        return 1.0
+    #/
+    
     ts_count = 0
     tv_count = 0
     total_nucs = len(nuc_pairs)
@@ -145,7 +155,12 @@ def tamura_distance(seq1,seq2):
     for x in zip(seq1,seq2):
         if '-' not in x and x[0] not in DEGENERATE_NUCS and x[1] not in DEGENERATE_NUCS: 
             nuc_pairs.append(x)
-        
+    
+    # check if no pairs were obtained (all gaps or degenerate nucls), then return 1.0, i.e. highest dist
+    if not nuc_pairs:
+        return 1.0
+    #/
+    
     ts_count = 0
     tv_count = 0
     total_nucs = len(nuc_pairs)
@@ -199,7 +214,12 @@ def tn_distance(seq1, seq2):
     #collect ungapped pairs
     for x in zip(seq1,seq2):
         if '-' not in x: pairs.append(x)
-       
+    
+    # check if no pairs were obtained (all gaps or degenerate nucls), then return 1.0, i.e. highest dist
+    if not pairs:
+        return 1.0
+    #/
+    
     #pair frequencies are calculated for AC, AG, AT, CG, CT, GT (and reverse order)
     for i in range(len(ns)-1):
         for j in range(i+1,len(ns)):
