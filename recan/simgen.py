@@ -148,7 +148,7 @@ class Simgen():
                 self.distance_data[seq.id].append(distance)
 
         
-        self._plot_distance_by_plotly()
+        #self._plot_distance_by_plotly() # comment this out to run on cmdline, otherwise an error is thrown about "`iplot` can only run inside an IPython Notebook.""
         
         
         
